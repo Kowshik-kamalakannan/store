@@ -1,9 +1,9 @@
-package com.example.demo.controller;
+package com.kowshik.store.controller;
 
 import java.util.List;
 
-import com.example.demo.model.Book;
-import com.example.demo.repsitory.bookrepo;
+import com.kowshik.store.model.Book;
+import com.kowshik.store.repository.bookrepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;

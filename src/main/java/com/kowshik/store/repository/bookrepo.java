@@ -1,6 +1,6 @@
-package com.example.demo.repsitory;
+package com.kowshik.store.repository;
 
-import com.example.demo.model.Book;
+import com.kowshik.store.model.Book;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

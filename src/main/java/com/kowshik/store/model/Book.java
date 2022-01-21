@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.kowshik.store.model;
 
 
 import org.springframework.data.annotation.Id;
