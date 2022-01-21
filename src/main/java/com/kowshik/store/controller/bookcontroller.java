@@ -1,9 +1,9 @@
-package com.example.demo.controller;
+package com.kowshik.store.controller;
 
 import java.util.List;
 
-import com.example.demo.model.Book;
-import com.example.demo.repsitory.bookrepo;
+import com.kowshik.store.model.Book;
+import com.kowshik.store.services.bookservices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,41 +17,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class bookcontroller {
     
-	//autoconfigure objects 
-    @Autowired
-	private bookrepo repo;
+	@Autowired
+	bookservices ser;
 
-
-	//add
     @PostMapping("/addBook")
 	public String saveBook(@RequestBody Book book) {
-        repo.save(book);
-		return "Added book with id : " + book.getId();
+        return ser.savebooks(book);
 	}
 
-	//display
     @GetMapping("/findAllBooks")
 	public List<Book> getBooks() {
-		return repo.findAll();
+		return ser.findAllbooks();
 	}
 
-	//delete
     @DeleteMapping("/delete/{id}")
 	public String deleteBook(@PathVariable int id) {
-		repo.deleteById(id);
-		return "book deleted with id : " + id;
+		return ser.deleteBooks(id);
+		
 	}
-
-
-	//update
 	@PutMapping("/update/{id}/{name}")
 	public String updateBookName(@PathVariable("id") int id,@PathVariable("name") String username)
 	{
-		Book book=repo.findById(id).get();
-		book.setName(username);
-		repo.save(book);
-		return "Updated name:"+username;
-
+		return ser.updatebook(id,username);
 	}
     
 }

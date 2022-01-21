@@ -1,5 +1,4 @@
-package com.example.demo.model;
-
+package com.kowshik.store.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +9,7 @@ public class Book {
     public int id;
 
     String name;
-
+    
     public int getId() {
         return id;
     }
@@ -23,11 +22,6 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-    @Override
-    public String toString() {
-        return "Book [id=" + id + ", name=" + name + "]";
-    }
-    
 
     
 }
