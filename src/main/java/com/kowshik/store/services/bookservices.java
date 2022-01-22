@@ -6,6 +6,8 @@ import com.kowshik.store.model.Book;
 import com.kowshik.store.repsoitory.bookrepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 
@@ -15,18 +17,19 @@ public class bookservices{
         @Autowired
         bookrepo repo;
         
-        //Insert
+        //Insert (insert evertime inserts an object)
         public String savebooks(Book book)
         {
             
-            repo.save(book);
+            repo.insert(book);
+            
             return "Added book with id : " + book.getId();
         }
 
         //displayall
         public List<Book> findAllbooks()
         {
-            return this.repo.findAll();
+            return repo.findAll();
         }
 
         //deletebyid
@@ -36,14 +39,22 @@ public class bookservices{
             return "book deleted with id : " + id;
         }
 
-        //updatename
-        public String updatebook(int id,String newname)
+        //updatename(//save if finds id updates the object if not found insert as new)
+        public String updatebook(int id,String username)
         {
             Book book=repo.findById(id).get();
-		    book.setName(newname);
+		    book.setName(username);
 		    repo.save(book);
-		    return "Updated name:"+newname;
+		    return "Updated name:"+username;
         }
+
+        public List<Book> getbyval(Book book) {
+            ExampleMatcher ex=ExampleMatcher.matching();
+            Example<Book> e= Example.of(book);
+            return repo.findAll(e);
+        }
+
+
 
         
 
