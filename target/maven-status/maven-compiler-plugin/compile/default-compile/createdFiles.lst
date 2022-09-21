@@ -1,0 +1,4 @@
+com/kowshik/store/controller/bookcontroller.class
+com/kowshik/store/repository/bookrepo.class
+com/kowshik/store/DemoApplication.class
+com/kowshik/store/model/Book.class
