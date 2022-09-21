@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'helllo'
+                sh 'mvn clean verify'
             }
         }
         stage('Test') {
